@@ -12,7 +12,8 @@ void addTask(){
 
     printf("\nEnter a title: ");
 
-    scanf("%18s", title);
+    fgets(title, sizeof(title), stdin);
+    title[strcspn(title, "\n")] = '\0';
 
     if (strlen(title) > 16) {
         printf("\nTitle is too long! Please limit to 16 characters.\n");
@@ -22,7 +23,8 @@ void addTask(){
 
     printf("Enter a description: ");
 
-    scanf("%66s", description);
+    fgets(description, sizeof(description), stdin);
+    description[strcspn(description, "\n")] = '\0'; 
 
     if (strlen(description) > 64) {
         printf("\nDescription is too long! Please limit to 64 characters.\n");
