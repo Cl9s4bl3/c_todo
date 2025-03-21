@@ -17,7 +17,7 @@ int main() {
         int action_int;
         char *endptr;
 
-        printf("\nAvailable actions:\n1) Add task\n");
+        printf("\nAvailable actions:\n1) Overview\n2) Add task\n3) Remove latest task\n");
 
         printf("Enter an action: ");
         if (fgets(action, sizeof(action), stdin) == NULL) {
@@ -41,9 +41,17 @@ int main() {
         }
 
         switch (action_int) {
+
             case 1:
+                overview();
+                break;
+            case 2:
                 addTask();
                 break;
+            case 3:
+                removeLatest();
+                break;
+            
             default:
                 printf("\nInvalid action.\n");
                 break;
