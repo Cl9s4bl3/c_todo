@@ -40,6 +40,7 @@ void addTask(){
 
     if (priority > 5 || priority < 1){
         printf("\nPriority needs to be between 1-5.\n");
+        clearBuffer();
         return;
     }
 
@@ -52,4 +53,7 @@ void addTask(){
     }
 
     fclose(file);
+
+    printf("\nSuccessfully added task '%s'.\n", title);
+    clearBuffer();
 }
