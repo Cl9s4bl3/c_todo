@@ -12,25 +12,26 @@ void overview() {
     }
 
     char line[100];
-
+    int count = 1;
+    printf("\n---------------------\n");
     while (fgets(line, sizeof(line), file)) {
-        line[strcspn(line, "\n")] = '\0';  // Remove the newline character
+        line[strcspn(line, "\n")] = '\0';
 
-        // Tokenize the line using ':' as the delimiter
-        char *title = strtok(line, ":");  // The first token is the title
-        char *description = strtok(NULL, ":");  // The second token is the description
-        char *priority = strtok(NULL, ":");  // The third token is the priority
+        char *title = strtok(line, ":");
+        char *description = strtok(NULL, ":");
+        char *priority = strtok(NULL, ":");
 
-        // Check if all parts were successfully extracted
         if (title != NULL && description != NULL && priority != NULL) {
-            // Print the formatted output
-            printf("\n%s: %s\n", title, description);
+            printf("\n%d) %s\n%s\n", count, title, description);
             printf("Priority: %s\n", priority);
         } else {
-            // Handle the case where the input format is incorrect
             printf("Invalid format in line: %s\n", line);
         }
+
+        count++;
     }
+
+    printf("\n---------------------\n");
 
     fclose(file);
 }
